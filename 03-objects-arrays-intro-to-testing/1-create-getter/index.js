@@ -6,10 +6,10 @@
 
 export function createGetter(path) {
   const fields = path.split('.');
+  if (!path) return
   return obj => {
-    let value = obj[fields.shift()];
-    for (let field of fields) {
-      if (!value) break;
+    let value = obj;
+    for (const field of fields) {
       value = value?.[field];
     }
     return value;
